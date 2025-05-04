@@ -1,0 +1,22 @@
+name: dotnet-build
+
+on:
+    push:
+        branches:
+            - main
+    schedule:
+        - cron: '0 * * * *'
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Baixar o código do repositório
+              uses: actions/checkout@v4
+      
+            - name: Listar os arquivos do projeto
+              run: ls -la
+      
+            - name: Criar um arquivo de log
+              run: echo "Build executado em $(date)" > log.txt
